@@ -38,7 +38,8 @@ df['text'] = df['Hosp'].astype(str) + '<br>Amount ' + (df['pop']).astype(str)
 limits = [(0,200),(300,1000),(1100,2000),(2100,5000),(5000,300000)]
 colors = ["royalblue","crimson","lightseagreen","orange","lightgrey"]
 cities = []
-
+df = df[df['dt'] >= '1941']
+df = df[df['dt'] <= '1946']
 fig = px.scatter_geo(df, lat = 'lat', lon = 'lon',  color="pop", hover_name='text',
                      size="pop",
                      animation_frame="dt",
