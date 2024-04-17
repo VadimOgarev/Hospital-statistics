@@ -32,7 +32,7 @@ with open('data.txt') as f:
         count +=1
     print([i[2] for i in cs.values()])
 
-df = pd.DataFrame({'Hosp': [i[0] for i in cs.keys()], 'dt': [i[1] for i in cs.keys()], 'pop' :[int(i[2]) for i in cs.values()], 'lat' : [i[0] for i in cs.values()], 'lon': [i[1] for i in cs.values()]})
+df = pd.DataFrame({'Hosp': [i[0] for i in cs.keys()], 'dt': [i[1] for i in cs.keys()], 'pop' :[int(i[2]) * 10 for i in cs.values()], 'pop1' :[int(i[2]) for i in cs.values()], 'lat' : [i[0] for i in cs.values()], 'lon': [i[1] for i in cs.values()]})
 #df = df[df['pop2'] > n2/1000]
 df['text'] = df['Hosp'].astype(str) + '<br>Amount ' + (df['pop']).astype(str)
 limits = [(0,200),(300,1000),(1100,2000),(2100,5000),(5000,300000)]
@@ -40,7 +40,7 @@ colors = ["royalblue","crimson","lightseagreen","orange","lightgrey"]
 cities = []
 df = df[df['dt'] >= '1941']
 df = df[df['dt'] <= '1946']
-fig = px.scatter_geo(df, lat = 'lat', lon = 'lon',  color="pop", hover_name='text',
+fig = px.scatter_geo(df, lat = 'lat', lon = 'lon',  color="pop1", hover_name='text',
                      size="pop",
                      animation_frame="dt",
                      projection="natural earth",

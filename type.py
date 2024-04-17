@@ -13,15 +13,15 @@ with open('data.txt') as f:
             break
         count+=1
         if "ЭГ" in line['gospital'] or "ТППГ" in line['gospital'] or "ХППГ" in line['gospital']  or "ГЛР" in line['gospital']  or "ИГ" in line['gospital']:
-            if 'Поздний этап' in cs.keys():
-                cs['Поздний этап'] += 1
+            if 'Поздний этап: ЭГ, ТППГ, ХППГ, ГЛР, ИГ' in cs.keys():
+                cs['Поздний этап: ЭГ, ТППГ, ХППГ, ГЛР, ИГ'] += 1
             else:
-                cs['Поздний этап'] = 1
-        elif "ППГ" in line['gospital'] or "ОМСБ" in line['gospital'] or "ТППГ" in line['gospital']  or "ОДР" in line['gospital']  or "СЭО" in line['gospital']:
-            if 'Ранний этап' in cs.keys():
-                cs['Ранний этап'] += 1
+                cs['Поздний этап: ЭГ, ТППГ, ХППГ, ГЛР, ИГ'] = 1
+        elif "ППГ" in line['gospital'] or "ОМСБ" in line['gospital']  or "ОДР" in line['gospital']  or "СЭО" in line['gospital']:
+            if 'Ранний этап: ОМСБ, ОДР,  СЭО, ППГ' in cs.keys():
+                cs['Ранний этап: ОМСБ, ОДР,  СЭО, ППГ'] += 1
             else:
-                cs['Ранний этап'] = 1
+                cs['Ранний этап: ОМСБ, ОДР,  СЭО, ППГ'] = 1
         else:
             if 'Другое' in cs.keys():
                 cs['Другое'] += 1
